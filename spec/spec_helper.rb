@@ -20,8 +20,14 @@ RSpec.configure do |config|
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
 
+  config.when_first_matching_example_defined(:db) do
+    require_relative 'support/db'
+  end
+
+  config.order = :random
+
   config.filter_gems_from_backtrace 'rack','rack-test', 'sequel', 'sinatra'
-  
+
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods
